@@ -53,7 +53,33 @@ body{
     padding: 0.5rem;
 }
 
+#loader{
+  height: 100%;
+  width: auto;
+  background-color: #071826;
 
+}
+#loader img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loadingtext{
+  align-items: center;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.quote{
+  color: aliceblue;
+  font-size: medium;
+}
+.writer{
+  color: beige;
+  font-size: larger;
+}
 
 
 
