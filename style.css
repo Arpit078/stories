@@ -65,6 +65,19 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+#refresh{
+  height: 100%;
+  width: auto;
+  background-color: #071826;
+  display: none;
+
+}
+#refresh img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .loadingtext{
   align-items: center;
   position: absolute;
@@ -82,12 +95,16 @@ body{
 }
 #book{
   position:fixed;
-  bottom: 0;
+  bottom: 1rem;
+  right: 1rem;
+  height: 1.5rem;
+  border: 2px solid black;
+  box-shadow: 4px 4px 0 0 black;
 }
+
 .highlight{
   background-color: yellow;
 }
-
 
 
 

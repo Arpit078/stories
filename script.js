@@ -3,7 +3,9 @@ const heading = document.getElementById("title")
 const content = document.getElementById("content")
 const toggle = document.getElementById("toggle")
 const loader = document.getElementById("loader")
+const refresh =document.getElementById("refresh")
 const book = document.getElementById("book")
+const popup_follow = document.getElementById("popup-follow")
 const url = "https://stories-api.onrender.com/"
 // const url = "http://localhost:5000/"
 
@@ -32,6 +34,17 @@ const hideLoading = () => {
     loader.style.display = 'none';
     container.style.display = 'block';
 };
+const displayRefreshing = () => {
+    container.style.display = 'none';
+    refresh.style.display = 'block';
+
+};
+
+const hideRefreshing = () => {
+    refresh.style.display = 'none';
+    container.style.display = 'block';
+};
+
 
 
 
@@ -39,6 +52,12 @@ const hideLoading = () => {
 
 async function getData(link){
     displayLoading()
+    const res = await fetch(link)
+    const data = await res.json()
+    
+    return data
+}
+async function backgroundFetch(link){
     const res = await fetch(link)
     const data = await res.json()
     
@@ -65,6 +84,7 @@ toggle.addEventListener("click", function(){
 function functionSelector(){
     if(localStorage.length === 0 && book.value === "add bookmark"){
         addBookMark()
+
 
         
 
@@ -96,6 +116,7 @@ function addBookMark() {
             //storing in localstorage
             localStorage.setItem("heading",heading.innerHTML)
             localStorage.setItem("content",new_content)
+            // localStorage.setItem("content_old",str)
             book.value = "remove bookmark"
 
             // console.log(storedSelections[0].startOffset,storedSelections[0].endOffset)
@@ -103,7 +124,9 @@ function addBookMark() {
 
 function removeBookMark(){
     console.log("cleared")
+    // content.innerHTML = localStorage.getItem("content_old")
     localStorage.clear()
+    // location.reload();
     getData(url).then((res)=>{
         hideLoading()
         heading.innerHTML = res.heading
@@ -114,6 +137,12 @@ function removeBookMark(){
 
     
 }
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+ }
+
+
+
 // -------------------------------runner code---------------------------------//
 if(window.localStorage.length===0){
     getData(url).then((res)=>{
@@ -129,4 +158,16 @@ if(window.localStorage.length===0){
     book.value = "remove bookmark"
     heading.innerHTML = localStorage.getItem('heading')
     content.innerHTML = localStorage.getItem('content')
+    backgroundFetch(url).then(async (res)=>{
+        if(res.heading != heading.innerHTML){
+           displayRefreshing()
+           await sleep(3000)
+            hideRefreshing()
+            //    setTimeout(hideLoading(),5000)
+            heading.innerHTML = res.heading
+            content.innerHTML = res.content
+           book.value = "add bookmark"
+           localStorage.clear()
+        }
+    })
 }
