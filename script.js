@@ -3,19 +3,23 @@ const heading = document.getElementById("title")
 const content = document.getElementById("content")
 const toggle = document.getElementById("toggle")
 const loader = document.getElementById("loader")
+const book = document.getElementById("book")
 const url = "https://stories-api.onrender.com/"
 // const url = "http://localhost:5000/"
 
+
+
+
 const pageArr = [
-    "n\n2\n\n",
-    "n\n3\n\n",
-    "n\n4\n\n",
-    "n\n5\n\n",
-    "n\n6\n\n",
-    "n\n7\n\n",
+    "पेज",
+    "n1",
+    "n2",
+    "n3",
+    "n4",
+    "n5",
+    "n6",
+    "n7",
 ]
-positions = []
-// console.log(pageArr["n\n2\n\n"])
 
 
 const displayLoading = () => {
@@ -37,12 +41,7 @@ async function getData(link){
     displayLoading()
     const res = await fetch(link)
     const data = await res.json()
-    // for(i=0;i<pageArr.length;i++){
-    //     pos = data.content.search(pageArr[i])
-    //     positions[i] = pos
-
-    // }
-    // console.log(positions)
+    
     return data
 }
 
@@ -59,12 +58,75 @@ toggle.addEventListener("click", function(){
 
     }
     
-  });
+});
 
-getData(url).then((res)=>{
+   
+
+function functionSelector(){
+    if(localStorage.length === 0 && book.value === "add bookmark"){
+        addBookMark()
+
+        
+
+    }else{
+        removeBookMark()
+
+
+    }
+}
+
+
+
+
+function addBookMark() {
+    
+            let storedSelections = [];
+            var currSelection = window.getSelection ();
+            for (var i = 0; i < currSelection.rangeCount; i++) {
+                storedSelections.push(currSelection.getRangeAt (i));
+
+            }
+            // console.log(storedSelections)
+            currSelection.removeAllRanges ();
+            const index = storedSelections[0].startOffset
+            let str = content.innerHTML
+            let insert = `<img src="./assets/pin.png" alt="" style="width: 40px;background-color: greenyellow; border-radius: 50%;">`
+            const new_content = str.slice(0, index) + insert + str.slice(index);
+            content.innerHTML = new_content
+            //storing in localstorage
+            localStorage.setItem("heading",heading.innerHTML)
+            localStorage.setItem("content",new_content)
+            book.value = "remove bookmark"
+
+            // console.log(storedSelections[0].startOffset,storedSelections[0].endOffset)
+        }
+
+function removeBookMark(){
+    console.log("cleared")
+    localStorage.clear()
+    getData(url).then((res)=>{
+        hideLoading()
+        heading.innerHTML = res.heading
+        content.innerHTML = res.content})
+    book.value = "add bookmark"
+
+    
+
+    
+}
+// -------------------------------runner code---------------------------------//
+if(window.localStorage.length===0){
+    getData(url).then((res)=>{
     hideLoading()
+    book.value = "add bookmark"
     heading.innerHTML = res.heading
     content.innerHTML = res.content
-
-
+    console.log("loaded")
 })
+
+}else{
+    hideLoading()
+    book.value = "remove bookmark"
+    heading.innerHTML = localStorage.getItem('heading')
+    content.innerHTML = localStorage.getItem('content')
+}

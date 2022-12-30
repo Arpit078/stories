@@ -80,7 +80,13 @@ body{
   color: beige;
   font-size: larger;
 }
-
+#book{
+  position:fixed;
+  bottom: 0;
+}
+.highlight{
+  background-color: yellow;
+}
 
 
 
