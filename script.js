@@ -116,7 +116,7 @@ function addBookMark() {
             //storing in localstorage
             localStorage.setItem("heading",heading.innerHTML)
             localStorage.setItem("content",new_content)
-            // localStorage.setItem("content_old",str)
+            localStorage.setItem("content_old",str)
             book.value = "remove bookmark"
 
             // console.log(storedSelections[0].startOffset,storedSelections[0].endOffset)
@@ -124,13 +124,13 @@ function addBookMark() {
 
 function removeBookMark(){
     console.log("cleared")
-    // content.innerHTML = localStorage.getItem("content_old")
+    content.innerHTML = localStorage.getItem("content_old")
     localStorage.clear()
     // location.reload();
-    getData(url).then((res)=>{
-        hideLoading()
-        heading.innerHTML = res.heading
-        content.innerHTML = res.content})
+    //getData(url).then((res)=>{
+        //hideLoading()
+        //heading.innerHTML = res.heading
+        //content.innerHTML = res.content})
     book.value = "add bookmark"
 
     
