@@ -127,10 +127,10 @@ function removeBookMark(){
     content.innerHTML = localStorage.getItem("content_old")
     localStorage.clear()
     // location.reload();
-    getData(url).then((res)=>{
-        hideLoading()
-        heading.innerHTML = res.heading
-        content.innerHTML = res.content})
+    // getData(url).then((res)=>{
+    //     hideLoading()
+    //     heading.innerHTML = res.heading
+    //     content.innerHTML = res.content})
     book.value = "add bookmark"
 
     
