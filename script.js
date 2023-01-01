@@ -6,8 +6,8 @@ const loader = document.getElementById("loader")
 const refresh =document.getElementById("refresh")
 const book = document.getElementById("book")
 // const popup_follow = document.getElementById("popup-follow")
-// const url = "https://stories-api.onrender.com/"
-const url = "http://localhost:5000/"
+const url = "https://stories-api.onrender.com/"
+// const url = "http://localhost:5000/"
 
 
 
