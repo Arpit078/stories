@@ -1,10 +1,12 @@
 
 // Cached core static resources 
+
+
 //calling install event
 self.addEventListener("install",(e)=>{
     e.waitUntil(
       caches.open("static").then(cache=>{
-        return cache.addAll(["./",'./logo192.png','./style.css','./script.js','./assets/load.png','./assets/pin.png','./service_worker.js','./manifest.json']);
+        return cache.addAll(["./cache/index.html","./cache/offline.gif"]);
       })
     );
   });
@@ -15,9 +17,16 @@ self.addEventListener("activate",(e)=>{
 })
   
   // call fetch event
-  self.addEventListener("fetch",(e )=>{
-      console.log("Service Worker : Fetching")
-    e.respondWith(
-        fetch(e.request).catch(()=>{caches.match(e.request)})
-    );
-  });
+  // self.addEventListener("fetch",(e )=>{
+  //   e.respondWith(
+  //       // fetch(e.request).catch(()=>{caches.match(e.request)})
+  //       // new Response('./cache/index.html')
+  //       caches.match(e.request)
+  //       .then(response => response ||fetch(e.request))
+  //       .catch(()=>{
+  //           if(e.request.mode === 'navigate'){
+  //               return caches.match('./cache/index.html')
+  //           }
+  //       })
+  //   );
+  // });

@@ -21,27 +21,29 @@
     </div>
 </div>
 <body>
-    <!-- <img src="./assets/pin.png" alt="" style="width: 40px;background-color: greenyellow; border-radius: 50%;"> -->
-    <!-- <p class="highlight">^_^</p> -->
-    <!-- <div class="popup-text"><h1>hey there new story is available want to read that? follow the button below for new story</h1><button id="popup-follow" onclick="changeFlag()">click</button></div> -->
     <div id="container">
         <div id="heading">
             <div id="title"></div>
+        </div>
+        <div id="content" data-carousel>
+                
             <div id="dark-light">
                 <label class="switch" >
                 <input type="checkbox" id="toggle">
                 <span class="slider round"></span>
                 </label>
             </div>
-
-        </div>
-        <div id="content">
         </div>
         <input id="book" type="button"
                value="add bookmark" 
-               onmousedown="functionSelector()">
-               
-    </div>
+               onmousedown="functionSelector()" style="display: none;">
+       
+            </div>
+            <div class="btn">
+
+                <button class="carouselbutton" id="prev" data-carousel-button="prev">prev</button>
+                <button class="carouselbutton" id="next" data-carousel-button="next">next</button>
+            </div>
     <script src="./script.js"></script>
 </body>
 </html>
