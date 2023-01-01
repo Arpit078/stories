@@ -1,52 +1,65 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Short Stories Daily</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="manifest" href="manifest.json">
-</head>
-<div id="loader">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <div id="loader">
     <img src="./assets/load.png" alt="" />
     <div class="loadingtext">
-        <p class="quote">We think these big people are very happy, but the truth is they are worse than us. We are just worried about one thing - hunger; they have a thousand worries.</p>
-        <p class="writer">Munshi Premchand</p>
+      <p class="quote">
+        We think these big people are very happy, but the truth is they are
+        worse than us. We are just worried about one thing - hunger; they have a
+        thousand worries.
+      </p>
+      <p class="writer">Munshi Premchand</p>
     </div>
-</div>
-<div id="refresh">
+  </div>
+  <div id="refresh">
     <img src="./assets/load.png" alt="" />
     <div class="loadingtext">
-        <p class="quote">Hello there we just found out that new story has come up just wait a second and let our bots update this page for you :)</p>
+      <p class="quote">
+        Hello there we just found out that new story has come up just wait a
+        second and let our bots update this page for you :)
+      </p>
     </div>
-</div>
-<body>
+  </div>
+  <body>
     <div id="container">
-        <div id="heading">
-            <div id="title"></div>
+      <div id="heading">
+        <div id="title"></div>
+        <div id="menu">
+            <!-- <span id="theme">dark</span> -->
+            <button" id="book" onclick="addBookMark()">&#9751</input>
         </div>
-        <div id="content" data-carousel>
-                
-            <div id="dark-light">
-                <label class="switch" >
-                <input type="checkbox" id="toggle">
-                <span class="slider round"></span>
-                </label>
-            </div>
+        
+      </div>
+      <div id="content" data-carousel>
+        <div id="dark-light">
+          <label class="switch">
+            <input type="checkbox" id="toggle" />
+            <span class="slider round"></span>
+          </label>
         </div>
-        <input id="book" type="button"
-               value="add bookmark" 
-               onmousedown="functionSelector()" style="display: none;">
-       
-            </div>
-            <div class="btn">
-
-                <button class="carouselbutton" id="prev" data-carousel-button="prev">prev</button>
-                <button class="carouselbutton" id="next" data-carousel-button="next">next</button>
-            </div>
+      </div>
+     
+    </div>
+    <div class="btn">
+      <button class="carouselbutton" id="prev" data-carousel-button="prev">
+        prev
+      </button>
+      <!-- <button class="carouselbutton" id="options">options</button> -->
+      <button class="carouselbutton" id="next" data-carousel-button="next">
+        next
+      </button>
+    </div>
+    <div id="myProgress">
+      <div id="myBar"></div>
+      <!-- <span id="percentage"></span> -->
+    </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
-
-
-

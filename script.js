@@ -69,43 +69,51 @@ toggle.addEventListener("click", function(){
 
    
 
-function functionSelector(){
-    if(localStorage.length === 0 && book.value === "add bookmark"){
-        addBookMark()
+// function functionSelector(){
+//     if(localStorage.length === 0 && book.value === "add bookmark"){
+//         addBookMark()
 
 
         
 
-    }else{
-        removeBookMark()
+//     }else{
+//         removeBookMark()
 
 
-    }
-}
+//     }
+// }
 
 
 
 
 function addBookMark() {
     
-            let storedSelections = [];
-            var currSelection = window.getSelection ();
-            for (var i = 0; i < currSelection.rangeCount; i++) {
-                storedSelections.push(currSelection.getRangeAt (i));
+            // let storedSelections = [];
+            // var currSelection = window.getSelection ();
+            // for (var i = 0; i < currSelection.rangeCount; i++) {
+            //     storedSelections.push(currSelection.getRangeAt (i));
 
-            }
+            // }
             // console.log(storedSelections)
-            currSelection.removeAllRanges ();
-            const index = storedSelections[0].startOffset
-            let str = content.innerHTML
-            let insert = `<img src="./assets/pin.png" alt="" style="width: 40px;background-color: greenyellow; border-radius: 50%;">`
-            const new_content = str.slice(0, index) + insert + str.slice(index);
-            content.innerHTML = new_content
+            // currSelection.removeAllRanges ();
+            // const index = storedSelections[0].startOffset
+            // let str = body.innerHTML
+            // let insert = `<img src="./assets/pin.png" alt="" style="width: 40px;background-color: greenyellow; border-radius: 50%;">`
+            // const new_content = str.slice(0, index) + insert + str.slice(index);
+            document.getElementById("book").style.color = "yellow"
+            // content.innerHTML = new_content
+            let savedContent = content.innerHTML
+            let savedHeading = heading.innerHTML
             //storing in localstorage
-            localStorage.setItem("heading",heading.innerHTML)
-            localStorage.setItem("content",new_content)
-            localStorage.setItem("content_old",str)
-            book.value = "remove bookmark"
+            localStorage.setItem("heading",savedHeading)
+            // localStorage.setItem("content",new_content)
+            localStorage.setItem("content",savedContent)
+            //---------------------------------------------
+            //will do something about savedpages later
+            // let savedPage = document.querySelector(".pageNumber").innerHTML
+            // localStorage.setItem("pageNumber",savedPage)
+            //----------------------------------------------
+            // book.value = "remove bookmark"
 
             // console.log(storedSelections[0].startOffset,storedSelections[0].endOffset)
         }
@@ -119,7 +127,7 @@ function removeBookMark(){
     //     hideLoading()
     //     heading.innerHTML = res.heading
     //     content.innerHTML = res.content})
-    book.value = "add bookmark"
+    // book.value = "add bookmark"
 
     
 
@@ -166,7 +174,7 @@ function insertHtmlObj(insertWhere,resStr,stringArr){
     let sepArr = createPages(resStr,stringArr)
     for(i=0;i<sepArr.length;i++){
         ID = allIDArr[i]
-        const htmlObj = `<div class="page" id="${ID}" data-slides>${sepArr[i]}<br><br><br><br></div>`
+        const htmlObj = `<div class="page" id="${ID}" data-slides>${sepArr[i]}<span class="pageNumber">${i+1}</span></div>`
         finalObj = finalObj + htmlObj
         // requiredIDArr.push(allIDArr[i])
     }
@@ -176,6 +184,22 @@ function insertHtmlObj(insertWhere,resStr,stringArr){
 
 const nextButton = document.getElementById("next")
 const prevButton = document.getElementById("prev")
+
+
+
+function colorOrNot(currentPage){
+    const pageNumber = localStorage.getItem("pageNumber")
+    if(Number(pageNumber)!= currentPage){
+        document.getElementById("book").style.color = ""
+    }else{document.getElementById("book").style.color = "yellow"}
+}
+
+
+
+
+
+
+
 // console.log(nextButton,prevButton)
 nextButton.addEventListener("click",()=>{
     let offset = 1
@@ -190,6 +214,11 @@ nextButton.addEventListener("click",()=>{
         if(newIndex>=pageArray.length){newIndex=0}
         pageArray[newIndex].dataset.active = true
         delete activeSlide.dataset.active
+        progress(newIndex,pageArray.length)
+        document.getElementById("book").style.color = ""
+
+        // colorOrNot(newIndex+1)
+
 })
 prevButton.addEventListener("click",()=>{
     let offset = -1
@@ -204,7 +233,22 @@ prevButton.addEventListener("click",()=>{
         if(newIndex>=pageArray.length){newIndex=0}
         pageArray[newIndex].dataset.active = true
         delete activeSlide.dataset.active
+        progress(newIndex,pageArray.length)
+        document.getElementById("book").style.color = ""
+
+        // colorOrNot(newIndex+1)
+
 })
+
+//progress bar
+function progress(pageNumber,totalPage) {
+    const myBar = document.getElementById("myBar")
+    const percentComplete = (pageNumber/totalPage)*100
+    myBar.style.width = `${percentComplete}%`
+    // document.getElementById("percentage").innerHTML = Math.floor(percentComplete)+"%"
+      
+}
+// menu logic
 
 
 // -------------------------------runner code---------------------------------//
@@ -215,7 +259,7 @@ if(window.localStorage.length===0){
     document.getElementById("ID0").dataset.active = ""
 
     hideLoading()
-    book.value = "add bookmark"
+    // book.value = "add bookmark"
     heading.innerHTML = res.heading
 
     console.log("loaded")
@@ -223,7 +267,7 @@ if(window.localStorage.length===0){
 
 }else{
     hideLoading()
-    book.value = "remove bookmark"
+    // book.value = "remove bookmark"
     heading.innerHTML = localStorage.getItem('heading')
     content.innerHTML = localStorage.getItem('content')
     backgroundFetch(url).then(async (res)=>{
@@ -234,7 +278,7 @@ if(window.localStorage.length===0){
             //    setTimeout(hideLoading(),5000)
             heading.innerHTML = res.heading
             content.innerHTML = res.content
-           book.value = "add bookmark"
+        //    book.value = "add bookmark"
            localStorage.clear()
         }
     })
