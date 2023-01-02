@@ -156,9 +156,9 @@ async function sleep(ms) {
 
 //FUNCTION to create string splits at interval of 1300, takes string argument and an empty array to push new strings.
 function createPages(resStr,stringArr){
-    let jump = 370
+    let jump = 340
     if(window.screen.width<=400){
-        jump = 370
+        jump = 340
     }
     if(window.screen.width>400 && window.screen.width<700){
         jump = 600
