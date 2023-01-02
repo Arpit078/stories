@@ -5,6 +5,7 @@ const toggle = document.getElementById("toggle")
 const loader = document.getElementById("loader")
 const refresh =document.getElementById("refresh")
 const book = document.getElementById("book")
+const bookmark = document.getElementById("ploygon")
 // const popup_follow = document.getElementById("popup-follow")
 const url = "https://stories-api.onrender.com/"
 // const url = "http://localhost:5000/"
@@ -54,14 +55,18 @@ async function backgroundFetch(link){
 
 toggle.addEventListener("click", function(){
     if(toggle.checked){
-        container.style.backgroundColor = "black"
-        container.style.color= "azure"
-        content.style.border = "1px solid azure"
+        document.body.style.backgroundColor = "black"
+        content.style.color= "white"
+        heading.style.color= "white"
+        pageNumber = document.getElementsByClassName("pageNumber")
+        pageNumber.forEach((e)=>{
+            e.style.color="white"  
+        })
     }
     else{
-        container.style.backgroundColor = "rgba(240, 227, 210, 0.8)"
-        container.style.color= "black"
-        content.style.border = "1px solid black"
+        document.body.style.backgroundColor = "rgba(240, 227, 210, 0.8)"
+        content.style.color= "black"
+        heading.style.color=  "black"
 
     }
     
@@ -100,7 +105,8 @@ function addBookMark() {
             // let str = body.innerHTML
             // let insert = `<img src="./assets/pin.png" alt="" style="width: 40px;background-color: greenyellow; border-radius: 50%;">`
             // const new_content = str.slice(0, index) + insert + str.slice(index);
-            document.getElementById("book").style.color = "yellow"
+
+            polygon.style.fill = "green"
             // content.innerHTML = new_content
             let savedContent = content.innerHTML
             let savedHeading = heading.innerHTML
@@ -191,7 +197,7 @@ function colorOrNot(currentPage){
     const pageNumber = localStorage.getItem("pageNumber")
     if(Number(pageNumber)!= currentPage){
         document.getElementById("book").style.color = ""
-    }else{document.getElementById("book").style.color = "yellow"}
+    }else{book.classList.add("highlight")}
 }
 
 
@@ -215,7 +221,9 @@ nextButton.addEventListener("click",()=>{
         pageArray[newIndex].dataset.active = true
         delete activeSlide.dataset.active
         progress(newIndex,pageArray.length)
-        document.getElementById("book").style.color = ""
+        // book.style.backgroundColor = ""
+    	
+        polygon.style.fill = "orange"
 
         // colorOrNot(newIndex+1)
 
@@ -234,7 +242,9 @@ prevButton.addEventListener("click",()=>{
         pageArray[newIndex].dataset.active = true
         delete activeSlide.dataset.active
         progress(newIndex,pageArray.length)
-        document.getElementById("book").style.color = ""
+        
+        polygon.style.fill = "orange"
+
 
         // colorOrNot(newIndex+1)
 

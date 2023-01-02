@@ -65,10 +65,13 @@ body{
   padding-top: 1.5rem;
   position: absolute;
   /* border: 2px solid black; */
+  transition: 400ms opacity ease-in-out;
+  /* transition-delay: 200ms; */
   opacity: 0;
 }
 .page[data-active]{
   opacity: 1;
+  /* transition-delay: 0ms; */
 }
 #loader{
   height: 100%;
@@ -110,13 +113,7 @@ body{
   color: beige;
   font-size: larger;
 }
-/* #book{ */
- /* border: none; */
- /* background-color: rgba(0, 0, 0, 0); */
-/* font-size: 2rem; */
-/* transform: rotate(180deg); */
- /* color: ye; */
-/* } */
+
 
 .highlight{
   background-color: yellow;
@@ -144,7 +141,7 @@ body{
 
 .pageNumber{
   font-size: 1rem;
-  color:#0000007d;
+  color:green;
   position: absolute;
   bottom: 1rem;
   right: 3rem;
@@ -171,11 +168,16 @@ body{
   bottom: 1rem;
   font-size: 1rem;
 } */
-
-
-
-
-
+#menu{
+  display: flex;
+  align-items: center;
+  position: inherit;
+  top:0
+}
+#book{
+ border: none;
+ background-color: rgba(0, 0, 0, 0);
+}
 
 
 
@@ -191,8 +193,8 @@ body{
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 10px;
   }
   
   /* Hide default HTML checkbox */
@@ -218,15 +220,17 @@ body{
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 20px;
+    width: 20px;
+    left: 0px;
+    bottom: -4px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+  .slider:after{
+    background-color: #031c31;
+  }
   input:checked + .slider {
     background-color: #2196F3;
   }
@@ -247,5 +251,5 @@ body{
   }
   
   .slider.round:before {
-    border-radius: 50%;
+    border-radius: 34px;
   }
