@@ -89,7 +89,12 @@ toggle.addEventListener("click", function(){
 // }
 
 
+function back(){
+    if(screen.width<500){
 
+        history.back()
+    }
+}
 
 function addBookMark() {
     
