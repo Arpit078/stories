@@ -276,7 +276,6 @@ if(window.localStorage.length===0){
     hideLoading()
     // book.value = "add bookmark"
     heading.innerHTML = res.heading
-    content.innerHTML=res.content
 
     console.log("loaded")
 })
