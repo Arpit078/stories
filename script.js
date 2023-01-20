@@ -43,7 +43,7 @@ async function getData(link){
     displayLoading()
     const res = await fetch(link)
     const data = await res.json()
-    
+    // console.log(res)
     return data
 }
 async function backgroundFetch(link){
