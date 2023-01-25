@@ -6,7 +6,6 @@ const loader = document.getElementById("loader")
 const refresh =document.getElementById("refresh")
 const book = document.getElementById("book")
 const bookmark = document.getElementById("ploygon")
-const head = document.getElementById("head")
 // const popup_follow = document.getElementById("popup-follow")
 const url = "https://stories-api.onrender.com/"
 // const url = "http://localhost:5000/"
@@ -17,14 +16,14 @@ const url = "https://stories-api.onrender.com/"
 const displayLoading = () => {
     container.style.display = 'none';
     loader.style.display = 'block';
-    head.style.content = '#071826'
+    document.getElementsByTagName('meta')["theme-color"].content = '#071826'
 
 };
 
 const hideLoading = () => {
     loader.style.display = 'none';
     container.style.display = 'block';
-    head.style.content = 'rgba(240, 227, 210, 0.8)'
+    document.getElementsByTagName('meta')["theme-color"].content = 'rgba(240, 227, 210, 0.8)'
 
 
 };
@@ -64,7 +63,8 @@ toggle.addEventListener("click", function(){
         content.style.color= "white"
         heading.style.color= "white"
         pageNumber = document.getElementsByClassName("pageNumber")
-        head.style.content = '#071826'
+        document.getElementsByTagName('meta')["theme-color"].content = '#071826'
+
         pageNumber.forEach((e)=>{
             e.style.color="white"  
         })
@@ -73,7 +73,8 @@ toggle.addEventListener("click", function(){
         document.body.style.backgroundColor = "rgba(240, 227, 210, 0.8)"
         content.style.color= "black"
         heading.style.color=  "black"
-        head.style.content = 'rgba(240, 227, 210, 0.8)'
+        document.getElementsByTagName('meta')["theme-color"].content = 'rgba(240, 227, 210, 0.8)'
+
 
 
     }
