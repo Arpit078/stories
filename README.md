@@ -5,7 +5,7 @@ so one night my parents were talking about this story "poos ki raat" written by 
 ## stopped working on this got bored :{ done some decent. some future updates wished are:
 - [ ] added feature of viewing all stories with dates
 - [ ] want to convert this app into epub and pdf reader that extracts text from pdf and responds with a view similar to epub readers.
-- [ ] make it more cool
+- [x] make it more cool
 
 # Video {tap right/left to turn page}
 
