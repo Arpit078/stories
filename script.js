@@ -6,6 +6,7 @@ const loader = document.getElementById("loader")
 const refresh =document.getElementById("refresh")
 const book = document.getElementById("book")
 const bookmark = document.getElementById("ploygon")
+// import idx from './no'
 // const popup_follow = document.getElementById("popup-follow")
 // const url = "https://stories-api.onrender.com/"
 const url = "./story_data.json"
@@ -41,12 +42,12 @@ const hideRefreshing = () => {
 
 
 
-async function getData(link){
+async function getData(link,idx){
     displayLoading()
     const res = await fetch(link)
     const data = await res.json()
     // console.log(data[0])
-    return data[0]
+    return data[idx]
 }
 async function backgroundFetch(link){
     const res = await fetch(link)
@@ -274,8 +275,9 @@ function progress(pageNumber,totalPage) {
 
 
 // -------------------------------runner code---------------------------------//
+// let idx = fs.readfile()
 if(window.localStorage.length===0){
-    getData(url).then((res)=>{
+    getData(url,idx).then((res)=>{
     let stringArr = []
     insertHtmlObj(content,res.content,stringArr)
     document.getElementById("ID0").dataset.active = ""
