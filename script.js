@@ -173,7 +173,7 @@ function createPages(resStr,stringArr){
     if(window.screen.width<=400){
         jump = 340
     }
-    if(window.screen.width>400 && window.screen.width<700){
+    if(window.screen.width>400 && window.screen.width<1200){
         jump = 400
     }
     if(window.screen.width>1200){
