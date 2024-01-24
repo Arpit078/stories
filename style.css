@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 body{
     margin: 0;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     background-color: #f0e3d2cc;
 
 }
@@ -30,10 +30,10 @@ body{
 #container{
     padding: 1rem;
     color: black;
-    height: max-content;
     z-index: 2;
     width: auto;
     height: max-content;
+    overflow-y: scroll;
 
     
     font-family: 'Tiro Devanagari Hindi', serif;
@@ -60,6 +60,8 @@ body{
 .page{
   font-size: 2rem;
   inset: 0;
+  height: fit-content;
+  overflow-y: scroll;
   margin-top: 6rem;
   margin-bottom: 2rem;
   padding-left: 2rem;
@@ -148,7 +150,8 @@ body{
 .pageNumber{
   font-size: 1rem;
   color:green;
-  position: absolute;
+  position: fixed;
+  bottom: 0;
   bottom: 1rem;
   right: 3rem;
 }
@@ -157,7 +160,7 @@ body{
 #myProgress {
   width: 100%;
   /* background-color: grey; */
-  position: absolute;
+  position: fixed;
   bottom: 0;
   /* display: flex; */
 

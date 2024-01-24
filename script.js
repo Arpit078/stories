@@ -174,10 +174,10 @@ function createPages(resStr,stringArr){
         jump = 340
     }
     if(window.screen.width>400 && window.screen.width<700){
-        jump = 600
+        jump = 400
     }
-    if(window.screen.width>700){
-        jump = 900
+    if(window.screen.width>1200){
+        jump = 1400
     }
     for(i=0;i<resStr.length;i+=jump){
     let page = resStr.slice(i,i+jump)
