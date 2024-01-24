@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 body{
     margin: 0;
-    /* overflow-y: hidden; */
+    overflow-x: hidden;
     background-color: #f0e3d2cc;
 
 }
